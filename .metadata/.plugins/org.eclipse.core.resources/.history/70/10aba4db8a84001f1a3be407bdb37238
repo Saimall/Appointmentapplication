@@ -1,0 +1,5 @@
+package com.example.Appointment.models;
+
+public class Appointmentmodel {
+
+}

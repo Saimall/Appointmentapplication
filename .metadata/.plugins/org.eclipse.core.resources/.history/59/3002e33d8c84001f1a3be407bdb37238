@@ -1,0 +1,15 @@
+package com.example.Appointment.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.Appointment.repository.Appointmentrepository;
+
+@Service
+public class Appointmentservices {
+	
+	@Autowired
+	private Appointmentrepository appointmentrepository;
+	
+
+}

@@ -1,0 +1,42 @@
+package com.example.Users.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.Users.models.Users;
+import com.example.Users.repository.Userrepo;
+
+@Service
+public class Userservice {
+	
+	@Autowired
+	private Userrepo userrepo;
+	
+	
+	public Users addUsers(Users user) {
+		
+		return userrepo.save(user);
+	}
+
+
+	public List<Users> getusers() {
+		
+		return userrepo.findAll();
+	}
+
+
+	public Users updateuser(Integer id,Users user) {
+		Optional<Users> userOptional = userrepo.findById(id);
+		
+		userOptional.get().setName(user.getName());
+		
+		
+		
+		return userOptional.get();
+		
+	}
+
+}

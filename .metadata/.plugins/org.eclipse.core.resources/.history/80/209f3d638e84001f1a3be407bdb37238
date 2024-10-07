@@ -1,0 +1,53 @@
+package com.example.Appointment.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.TinyBitSet;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.example.Appointment.models.Appointmentmodel;
+import com.example.Appointment.repository.Appointmentrepository;
+
+@Service
+public class Appointmentservices {
+	
+	@Autowired
+	private Appointmentrepository appointmentrepository;
+	
+	
+	public Appointmentmodel addAppointmentmodel(Appointmentmodel app) {
+		
+		return appointmentrepository.save(app);
+		
+	}
+
+
+	public List<Appointmentmodel> getallappointments() {
+		
+		return appointmentrepository.findAll();
+		
+	}
+
+
+	public void deleteappointment(int id) {
+		
+		appointmentrepository.deleteById(id);
+		// TODO Auto-generated method stub
+	}
+	
+	public Appointmentmodel updateAppointmentmodel(int id, Appointmentmodel app) {
+		Optional<Appointmentmodel> appdemo = appointmentrepository.findById(id);
+		
+		appdemo.get().setAppointmentname(app.getAppointmentname());
+		
+		appdemo.get().setDate(app.getDate());
+		
+		appdemo.get().setDesciption(app.getDesciption());
+		
+	}
+
+}
